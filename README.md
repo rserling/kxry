@@ -9,7 +9,8 @@ This set of scripts creates hourly audio files from the broadcast. It keeps 1 we
 * **disk.rb**: checks the root disk and logs it
 ### Support Files
 * **index.php**: the web interface for user access to the files
-* **httpd.conf**: the web config 
+* **kxry.css**: lovely styles for web interface
+* **kxry.conf**: the nginx site config 
 
 ## Implementation
 Scripts are all run from cron thusly:
@@ -23,6 +24,7 @@ Scripts are all run from cron thusly:
 ## To Do
 * The main record script **kxry-archive.rb** should calculate on invocation how many seconds are left in the hour and apply that to ffmpeg for duration
 * This ideally should not run from cron but be a continuous daemon-like process which splits off hourly, and restarts itself (from systemd?) if it ends unexpectedly
+* Logging should all go to one file, right now it is 2 or 3
 * It should be possible to send alerts as SMS or e-mail or whatever
 * The disk checker **disk.rb** should send alerts before root is full
 
