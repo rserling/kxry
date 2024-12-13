@@ -22,19 +22,23 @@ Scripts are all run from cron thusly:
 ````
 
 ## To Do
-* The main record script **kxry-archive.rb** should calculate on invocation how many seconds are left in the hour and apply that to ffmpeg for duration
-* This ideally should not run from cron but be a continuous daemon-like process which splits off hourly, and restarts itself (from systemd?) if it ends unexpectedly
+### Easy
 * Logging should all go to one file, right now it is 2 or 3
+* Ideally should not run from cron but be a continuous daemon-like process managed under systemd
+### Hard
 * It should be possible to send alerts as SMS or e-mail or whatever
 * The disk checker **disk.rb** should send alerts before root is full
+* The main record script **kxry-archive.rb** should calculate on invocation how many seconds are left in the hour and apply that to ffmpeg for duration
 
-### Dependencies
-
+## Prerequisites
 * Some \*nix flavour, currently debian on raspberry pi
 * ruby
-* user linda with dir /home/linda/radio
+* nginx 
+ 
+## Dependencies
+* user **linda** with dir /home/linda/radio
 * NAS mount at /home/linda/radio/archive
-* web server (currently nginx) 
+* Web content dir /var/www/html/archive
 
 ## Authors
 
