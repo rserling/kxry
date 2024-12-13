@@ -6,14 +6,14 @@ A set of scripts creates hourly audio files from the broadcast. One (1) week of 
 ### Scripts
 * **kxry-archive.rb**: the main script which grabs the stream using ffmpeg, writes them to /var/tmp and after each hour moves them from /var/tmp to /home/linda/radio/ 
 * **kxry-prune.rb**: checks for files older than 7 days, re-encodes them and outputs to NAS 
-* **disk.rb**: checks the root disk and logs it
+* **disk.rb**: checks root disk usage and logs it. This is an interim band-aid and should not be needed long-term. Logs will provide a growth trend to manage. It might be fine as it is.
 ### Support Files
 * **index.php**: the web interface for user access to the files
 * **kxry.css**: lovely styles for web interface
 * **kxry.conf**: the nginx site config 
 
 ## Dependencies
-* Some \*nix flavour, currently **debian** on **raspberry pi**
+* Some \*nix flavour (currently **debian 11.9** on **raspberry pi**)
 * ruby
 * nginx 
 * ffmpeg, lame 
