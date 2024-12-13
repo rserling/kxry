@@ -1,7 +1,7 @@
 # KXRY - hourly recording and audio file management
 
 ## Description
-A set of scripts creates hourly audio files from the broadcast. It keeps 1 week of 256kb/s mp3 files, and re-encodes older files to smaller mono mp3 at a separate NAS storage path. Provides a web interface for browsing the files.
+A set of scripts creates hourly audio files from the broadcast. One (1) week of 256kb/s mp3 files are kept. Older files are re-encoded to smaller mono mp3 at a separate NAS storage path. A web interface enables browsing the files.
 
 ### Scripts
 * **kxry-archive.rb**: the main script which grabs the stream using ffmpeg, writes them to /var/tmp and after each hour moves them from /var/tmp to /home/linda/radio/ 
