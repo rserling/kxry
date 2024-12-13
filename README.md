@@ -13,13 +13,22 @@ This set of scripts creates hourly audio files from the broadcast. It keeps 1 we
 * **kxry.conf**: the nginx site config 
 
 ## Implementation
-Scripts are all run from cron thusly:
+Scripts are run from cron thusly:
 ````
 #@reboot /home/linda/bin/kxry-archive.rb 2>&1
 0 * * * * /home/linda/bin/kxry-archive.rb 2>&1
 30 0 * * * /home/linda/bin/kxry-prune.rb 2>&1
 21 12 * * * /home/linda/bin/disk.rb 2>&1
 ````
+## Dependencies
+* Some \*nix flavour, currently **debian** on **raspberry pi**
+* ruby
+* nginx 
+ 
+## Prerequisites
+* user **linda** with dir /home/linda/radio
+* NAS mount at /home/linda/radio/archive
+* Web content dir /var/www/html/archive
 
 ## To Do
 ### Easy/Doable
@@ -29,16 +38,6 @@ Scripts are all run from cron thusly:
 ### Hard/Moneys
 * It should be possible to send alerts as SMS or e-mail or whatever
 * The disk checker **disk.rb** should send alerts before root is full
-
-## Prerequisites
-* Some \*nix flavour, currently debian on raspberry pi
-* ruby
-* nginx 
- 
-## Dependencies
-* user **linda** with dir /home/linda/radio
-* NAS mount at /home/linda/radio/archive
-* Web content dir /var/www/html/archive
 
 ## Authors
 
