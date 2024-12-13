@@ -33,8 +33,7 @@ Scripts are run from cron thusly:
 ````
 ## To Do
 ### Easy/Doable
-* All logging to one file, right now it is 2 or 3
-* The record script calculates remaining seconds in the hour and apply that to ffmpeg for duration
+* The record script calculates remaining seconds in the hour and applies that to ffmpeg for duration
 ### Hard/Time
 * Should not run from cron, but be a continuous daemon-like process managed under systemd
 ### Hard/Moneys

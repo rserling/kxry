@@ -8,7 +8,7 @@ def logme(msg)
   msg.chomp!
   
   File.open(log, "a") do |f|
-    output = "[#{logtime}] (kxry) #{msg}\n"
+    output = "[#{logtime}] (kxry-archive) #{msg}\n"
     if ENV['TERM']
       puts output
     else
@@ -51,4 +51,5 @@ end
 
 logme("completed recording #{PRG} for #{date}")
 FileUtils.mv("#{opath}/#{fname}", npath)
+logme("File #{fname} moved to npath")
 exit

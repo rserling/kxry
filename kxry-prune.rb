@@ -3,18 +3,21 @@
 dir = "/home/linda/radio"
 
 # Handle logging
-log_file = "/var/log/kxry.log"
-date = Time.now.strftime("%Y-%m-%d %H:%M:%S")
-if ENV['TERM'].nil?
-  $stdout.reopen(log_file, 'a')
-  $stdout.sync = true
-else
-  # Keep output to terminal
-  begin
-    File.open(log_file, 'a') or warn("Can't open logfile #{log_file}")
-  rescue => e
-    warn("Can't open logfile #{log_file}: #{e.message}")
+def logme(msg)
+  log = "/var/log/kxry.log"
+  logtime = Time.now.strftime("%Y-%m-%d %H:%M:%S")
+  msg.chomp!
+
+  File.open(log, "a") do |f|
+    output = "[#{logtime}] (kxry-prune) #{msg}\n"
+    if ENV['TERM']
+      puts output
+    else
+      f.write(output)
+    end
   end
+rescue => e
+  warn "Can't log: #{e.message}"
 end
 
 # Change to target directory
@@ -27,19 +30,21 @@ Dir.chdir(dir) do
     if days_old > 7
       # Attempt to re-encode the file
       if system("/bin/lame", "-a", "-m", "m", "-b", "24", "--quiet", file, "archive/#{file}")
-        puts "[#{date}] Squished file #{file} to archive path"
+        logme("Squished file #{file} to archive path")
         # Re-encoding succeeded, try to remove original file
         begin
           File.unlink(file)
-          puts "[#{date}] Removed file #{file}"
+          logme("Removed file #{file}")
         rescue => e
-          puts "[#{date}] Unable to unlink file #{file}: #{e.message}"
+          logme("Unable to unlink file #{file}: #{e.message}")
         end
       else
-        puts "[#{date}] Re-encoding failed on file #{file}"
+        logme("Re-encoding failed on file #{file}")
       end
     else
-      puts "[#{date}] File #{file} deemed to be younger than 7 days, skipping."
+      if ENV['TERM']
+        logme("File #{file} deemed to be younger than 7 days, skipping.")
+      end
     end
   end
 end
