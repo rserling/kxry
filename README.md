@@ -53,7 +53,7 @@ Erik Lyons, a.k.a. ErikNerd
 
 ## License
 
-This project is licensed under the [ErikNerd] License - see the LICENSE.md file for details
+This project is licensed under the [ErikNerd] License - see the LICENSE.md file for details, if the file exists. If it does not yet exist, please ignore it.
 
 ## Acknowledgments
 
