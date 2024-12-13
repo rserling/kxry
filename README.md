@@ -22,13 +22,13 @@ Scripts are all run from cron thusly:
 ````
 
 ## To Do
-### Easy
+### Easy/Doable
 * Logging should all go to one file, right now it is 2 or 3
 * Ideally should not run from cron but be a continuous daemon-like process managed under systemd
-### Hard
+* The main record script **kxry-archive.rb** should calculate on invocation how many seconds are left in the hour and apply that to ffmpeg for duration
+### Hard/Moneys
 * It should be possible to send alerts as SMS or e-mail or whatever
 * The disk checker **disk.rb** should send alerts before root is full
-* The main record script **kxry-archive.rb** should calculate on invocation how many seconds are left in the hour and apply that to ffmpeg for duration
 
 ## Prerequisites
 * Some \*nix flavour, currently debian on raspberry pi
