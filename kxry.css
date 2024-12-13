@@ -1,0 +1,8 @@
+BODY {background-color:#FFFFFF; color:#000000; font-family:verdana,arial,monospace; font-size:8pt}
+H2,H3 {font-family:helvetica,sans-serif; color:#007000}
+TABLE {border-collapse:collapse; border-width:1px; border-color:#000000; color:#000000}
+TD {font-family:courier new,monospace; font-size:8pt; color:#000000; border-color:#000000; border-width:1px; }
+.button {font-size:9pt; font-family:courier new,monospace; align:center}
+a {color:#007000}
+a:hover, a:active {color:#FFFFFF; background-color:#007000; }
+a:visited {color:#CCCCCC; }
