@@ -33,9 +33,10 @@ Scripts are run from cron thusly:
 ````
 ## To Do
 ### Easy/Doable
-* Logging should all go to one file, right now it is 2 or 3
-* Ideally should not run from cron but be a continuous daemon-like process managed under systemd
-* The main record script **kxry-archive.rb** should calculate on invocation how many seconds are left in the hour and apply that to ffmpeg for duration
+* All logging to one file, right now it is 2 or 3
+* The record script calculates remaining seconds in the hour and apply that to ffmpeg for duration
+### Hard/Time
+* Should not run from cron, but be a continuous daemon-like process managed under systemd
 ### Hard/Moneys
 * It should be possible to send alerts as SMS or e-mail or whatever
 * The disk checker **disk.rb** should send alerts before root is full
