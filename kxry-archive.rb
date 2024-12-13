@@ -4,7 +4,7 @@ require 'fileutils'
 
 def logme(msg)
   log = "/var/log/kxry.log"
-  logtime = `date +%Y-%m-%d\ %H:%M:%S`.chomp
+  logtime = Time.now.strftime("%Y-%m-%d %H:%M:%S")
   msg.chomp!
   
   File.open(log, "a") do |f|

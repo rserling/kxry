@@ -3,7 +3,7 @@
 dir = "/home/linda/radio"
 
 # Handle logging
-log_file = "#{dir}/kxry-prune.log"
+log_file = "#{dir}/kxry.log"
 date = Time.now.strftime("%Y-%m-%d %H:%M:%S")
 if ENV['TERM'].nil?
   $stdout.reopen(log_file, 'a')
