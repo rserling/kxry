@@ -1,7 +1,7 @@
 from sendemail import email_send
 
 subject = "KXRY Alert"
-sender = "Erik Nerd <wolfstools@gmail.com>"
+sender = "ErikNerd <wolfstools@gmail.com>"
 
 recipients = []
 recipients.append("davedatt@gmail.com")

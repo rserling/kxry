@@ -30,7 +30,7 @@ from email.mime.base import MIMEBase
 from email import encoders
 
 username = "wolfstools@gmail.com"
-password = "n0Fr0get"
+password = "" # get from encrypted source
 smtp_host = "smtp.gmail.com"
 smtp_port = 587
 
