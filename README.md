@@ -1,7 +1,7 @@
-# kxry - hourly recording and resulting file management
+# KXRY - hourly recording and audio file management
 
 ## Description
-This set of scripts creates hourly audio files from the broadcast. It keeps 1 week of original 256kb/s mp3 files, and re-encodes older files to a smaller mono mp3 in a separate NAS storage path.
+A set of scripts creates hourly audio files from the broadcast. It keeps 1 week of 256kb/s mp3 files, and re-encodes older files to smaller mono mp3 at a separate NAS storage path. Provides a web interface for browsing the files.
 
 ### Scripts
 * **kxry-archive.rb**: the main script which grabs the stream using ffmpeg, writes them to /var/tmp and after each hour moves them from /var/tmp to /home/linda/radio/ 
@@ -12,6 +12,17 @@ This set of scripts creates hourly audio files from the broadcast. It keeps 1 we
 * **kxry.css**: lovely styles for web interface
 * **kxry.conf**: the nginx site config 
 
+## Dependencies
+* Some \*nix flavour, currently **debian** on **raspberry pi**
+* ruby
+* nginx 
+* ffmpeg, lame 
+ 
+## Prerequisites
+* user **linda** with dir /home/linda/radio
+* NAS mount at /home/linda/radio/archive
+* Web content dir /var/www/html/archive
+
 ## Implementation
 Scripts are run from cron thusly:
 ````
@@ -20,16 +31,6 @@ Scripts are run from cron thusly:
 30 0 * * * /home/linda/bin/kxry-prune.rb 2>&1
 21 12 * * * /home/linda/bin/disk.rb 2>&1
 ````
-## Dependencies
-* Some \*nix flavour, currently **debian** on **raspberry pi**
-* ruby
-* nginx 
- 
-## Prerequisites
-* user **linda** with dir /home/linda/radio
-* NAS mount at /home/linda/radio/archive
-* Web content dir /var/www/html/archive
-
 ## To Do
 ### Easy/Doable
 * Logging should all go to one file, right now it is 2 or 3
