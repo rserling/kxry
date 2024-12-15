@@ -20,6 +20,13 @@ rescue => e
   warn "Can't log: #{e.message}"
 end
 
+# Check NAS mount, crudely
+arch = "#{dir}/archive"
+mount = `mount |grep nfs |cut -f3 -d' '`.chomp
+if mount != arch
+  abort("NAS not mounted, aborting archive operation")
+end
+
 # Change to target directory
 Dir.chdir(dir) do
   # Find MP3 files and squish them
@@ -28,6 +35,7 @@ Dir.chdir(dir) do
     days_old = (Time.now - File.mtime(file)) / (24 * 60 * 60)
     
     if days_old > 7
+      logme("Found old enough file #{file}")
       # Attempt to re-encode the file
       if system("/bin/lame", "-a", "-m", "m", "-b", "24", "--quiet", file, "archive/#{file}")
         logme("Squished file #{file} to archive path")

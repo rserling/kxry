@@ -36,9 +36,13 @@ Scripts are run from cron thusly:
 21 12 * * * /home/linda/bin/disk.rb 2>&1
 ````
 ## To Do
+* The archiving to NAS mount is vulnerable to NFS go-away, need to test mount before proceeding
+* **kxry-prune.rb** is a bit inefficient, glob of file list could be less greedy
 * Should not run from cron, but be a continuous daemon-like process managed under systemd
 * It should be possible to send alerts as SMS or e-mail or whatever
 * The disk checker **disk.rb** should send alerts before root is full
+
+
 Messaging is a challenge and probably requires a 3rd-party $ervice
 
 ## Authors
