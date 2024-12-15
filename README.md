@@ -4,9 +4,10 @@
 A set of scripts creates hourly audio files from the broadcast. One (1) week of 256kb/s mp3 files are kept. Older files are re-encoded to smaller mono mp3 at a separate NAS storage path. A web interface enables browsing the files.
 
 ### Scripts
-* **kxry-archive.rb**: the main script which grabs the stream using ffmpeg, writes them to /var/tmp and after each hour moves them from /var/tmp to /home/linda/radio/
+* **kxry-archive.rb**: the main script which grabs the stream using ffmpeg, writes them to /var/tmp and after each hour moves them from /var/tmp to /home/linda/radio/. This can be run manually and a record will be done to the end of the current hour.
 * **kxry-prune.rb**: checks for files older than 7 days, re-encodes them and outputs to NAS
 * **disk.rb**: checks root disk usage and logs it. This is an interim band-aid and should not be needed long-term. Logs will provide a growth trend to manage. It might be fine as it is.
+
 Scripts log to **/var/log/kxry.log**
 
 ### Support Files
@@ -21,10 +22,10 @@ Scripts log to **/var/log/kxry.log**
 * ffmpeg, lame 
  
 ## Prerequisites
-* user **linda** with dir /home/linda/radio
-* NAS mount at /home/linda/radio/archive
-* Web content dir /var/www/html/archive
-* Log file /var/log/kxry.log writable by linda
+* user **linda** with dir **/home/linda/radio**
+* NAS mount at **/home/linda/radio/archive**
+* Web content dir **/var/www/html/archive**
+* Log file **/var/log/kxry.log** writable by linda
 
 ## Implementation
 Scripts are run from cron thusly:
