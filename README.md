@@ -4,9 +4,11 @@
 A set of scripts creates hourly audio files from the broadcast. One (1) week of 256kb/s mp3 files are kept. Older files are re-encoded to smaller mono mp3 at a separate NAS storage path. A web interface enables browsing the files.
 
 ### Scripts
-* **kxry-archive.rb**: the main script which grabs the stream using ffmpeg, writes them to /var/tmp and after each hour moves them from /var/tmp to /home/linda/radio/ 
-* **kxry-prune.rb**: checks for files older than 7 days, re-encodes them and outputs to NAS 
+* **kxry-archive.rb**: the main script which grabs the stream using ffmpeg, writes them to /var/tmp and after each hour moves them from /var/tmp to /home/linda/radio/
+* **kxry-prune.rb**: checks for files older than 7 days, re-encodes them and outputs to NAS
 * **disk.rb**: checks root disk usage and logs it. This is an interim band-aid and should not be needed long-term. Logs will provide a growth trend to manage. It might be fine as it is.
+Scripts log to **/var/log/kxry.log**
+
 ### Support Files
 * **index.php**: the web interface for user access to the files
 * **kxry.css**: lovely styles for web interface
@@ -22,6 +24,7 @@ A set of scripts creates hourly audio files from the broadcast. One (1) week of 
 * user **linda** with dir /home/linda/radio
 * NAS mount at /home/linda/radio/archive
 * Web content dir /var/www/html/archive
+* Log file /var/log/kxry.log writable by linda
 
 ## Implementation
 Scripts are run from cron thusly:
@@ -32,13 +35,10 @@ Scripts are run from cron thusly:
 21 12 * * * /home/linda/bin/disk.rb 2>&1
 ````
 ## To Do
-### Easy/Doable
-* The record script calculates remaining seconds in the hour and applies that to ffmpeg for duration
-### Hard/Time
 * Should not run from cron, but be a continuous daemon-like process managed under systemd
-### Hard/Moneys
 * It should be possible to send alerts as SMS or e-mail or whatever
 * The disk checker **disk.rb** should send alerts before root is full
+Messaging is a challenge and probably requires a 3rd-party $ervice
 
 ## Authors
 

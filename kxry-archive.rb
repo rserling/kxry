@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby
-# To do: take an optional arg for arbitrary number of seconds in case started after the hour
 require 'fileutils'
+
+if Time.now.strftime("%M").to_i > 0
+  duration = 3600 - (Time.now.min * 60 + Time.now.sec)
+end
 
 def logme(msg)
   log = "/var/log/kxry.log"
@@ -21,6 +24,9 @@ end
 
 PRG = "kxry"
 LENGTH = "3600"
+if duration
+  LENGTH = duration
+end
 CMD = "/usr/bin/ffmpeg"
 
 unless File.exist?(CMD)
@@ -33,6 +39,9 @@ url = "http://listen.xray.fm/stream"
 npath = "/home/linda/radio"
 opath = "/var/tmp"
 fname = "#{PRG}#{date}.mp3"
+if duration
+  fname = "#{PRG}#{date}.part.mp3"
+end
 args = " -i #{url} -f mp3 -t #{LENGTH} #{fname}"
 cmd = CMD + args
 
@@ -51,5 +60,5 @@ end
 
 logme("completed recording #{PRG} for #{date}")
 FileUtils.mv("#{opath}/#{fname}", npath)
-logme("File #{fname} moved to npath")
+logme("File #{fname} moved to #{npath}")
 exit
