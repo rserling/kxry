@@ -4,9 +4,9 @@
 A set of scripts creates hourly audio files from the broadcast. One (1) week of 256kb/s mp3 files are kept. Older files are re-encoded to smaller mono mp3 at a separate NAS storage path. A web interface enables browsing the files.
 
 ### Scripts
-* **kxry-archive.rb**: the main script which grabs the stream using ffmpeg, writes them to /var/tmp and after each hour moves them from /var/tmp to /home/linda/radio/. This can be run manually and a record will be done to the end of the current hour.
+* **kxry-archive.rb**: the main script which grabs the stream using ffmpeg, writes them to **/var/tmp** and after each hour moves them from **/var/tmp** to **/home/linda/radio/**. This can be run manually and a record will be done to the end of the current hour.
 * **kxry-prune.rb**: checks for files older than 7 days, re-encodes them and outputs to NAS
-* **disk.rb**: checks root disk usage and logs it. This is an interim band-aid and should not be needed long-term. Logs will provide a growth trend to manage. It might be fine as it is.
+* **disk.rb**: checks root disk usage and logs it. This is an interim band-aid and should not be needed long-term. Logs will provide a growth trend to manage. It might be fine as it is. 
 
 Scripts log to **/var/log/kxry.log**
 
@@ -35,8 +35,10 @@ Scripts are run from cron thusly:
 30 0 * * * /home/linda/bin/kxry-prune.rb 2>&1
 21 12 * * * /home/linda/bin/disk.rb 2>&1
 ````
+### Doomsday Scenario (a.k.a. Slow-moving Train Wreck)
+If the NFS mount to NAS is interrupted, **kxry-prune.rb** will switch output to the legacy USB volume at **/home/linda/radio/older**, this will provide a 30GB "buffer" for the long-term archiving. So the lost NAS condition will result in filled failover storage after about **113 days** (3.7 months). At that point, another **3 weeks** of unpruned primary recordings will fill the root disk. 
+
 ## To Do
-* **kxry-prune.rb** is a bit inefficient, glob of file list could be less greedy
 * Should not run from cron, but be a continuous daemon-like process managed under systemd
 * It should be possible to send alerts as SMS or e-mail or whatever
 * The disk checker **disk.rb** should send alerts before root is full
