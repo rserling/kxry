@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-dir = "/home/linda/radio"
+$dir = "/home/linda/radio"
 
 # Handle logging
 def logme(msg)
@@ -22,14 +22,14 @@ end
 
 # Check NAS mount, crudely
 def checkmounts()
-  arch = "#{dir}/archive"
+  arch = "#{$dir}/archive"
   mount = `mount |grep archive |cut -f3 -d' '`.chomp
   if mount != arch
     logme("ERROR: NAS not mounted, failing over to USB storage")
   else
     return arch
   end
-  olde = "#{dir}/older"
+  olde = "#{$dir}/older"
   mount = `mount |grep older |cut -f3 -d' '`.chomp
   if mount != olde 
     logme("ERROR: USB not mounted, no pruning happened")
@@ -39,8 +39,8 @@ def checkmounts()
 end
 
 # Change to target directory
-dest = checkmount()
-Dir.chdir(dir) do
+dest = checkmounts()
+Dir.chdir($dir) do
   # Find MP3 files and squish them
   Dir.glob("*.mp3").each do |file|
     # Check if file is older than 7 days
