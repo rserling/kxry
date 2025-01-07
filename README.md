@@ -40,6 +40,7 @@ Scripts are run from cron thusly:
 If the NFS mount to NAS is interrupted, **kxry-prune.rb** will switch output to the legacy USB volume at **/home/linda/radio/older**, this will provide a 30GB "buffer" for the long-term archiving. So the lost NAS condition will result in filled failover storage after about **113 days** (3.7 months). At that point, another **3 weeks** of unpruned primary recordings will fill the root disk. 
 
 ## To Do
+* Move these To Do items into proper **Issues**, like an adult
 * Maybe have a routine/operation (script?) for hands-free deployment, minimally a tgz or zip that verifies/creates paths and populates all files
 * Should not run from cron, but be a continuous daemon-like process managed under systemd
 * It should be possible to send alerts as SMS or e-mail or whatever
