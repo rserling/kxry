@@ -40,7 +40,7 @@ Scripts are run from cron thusly:
 If the NFS mount to NAS is interrupted, **kxry-prune.rb** will switch output to the legacy USB volume at **/home/linda/radio/older**, this will provide a 30GB "buffer" for the long-term archiving. So the lost NAS condition will result in filled failover storage after about **113 days** (3.7 months). At that point, another **3 weeks** of unpruned primary recordings will fill the root disk. 
 
 ## To Do
-Action items have been captured as [Issues](kxry/issues) in this repository.
+Action items have been captured as [Issues](rserling/kxry/issues) in this repository.
 
 Messaging is a challenge and probably requires a 3rd-party $ervice
 
