@@ -59,4 +59,4 @@ This project is licensed under the [ErikNerd] License - see the LICENSE.md file 
 
 ## Acknowledgments
 
-Thanks to Dave Fulton for voluminous feedback, some constructive
+Thanks to [Dave Fulton](mailto:davedatt@gmail.com) for voluminous feedback, some constructive
