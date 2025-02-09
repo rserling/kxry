@@ -1,4 +1,5 @@
 # KXRY - hourly recording and audio file management
+<img src-"https://xray.fm/theme/107/img/logo1_white-on-black_399.png" alt="Xray Logo">
 
 ## Description
 A set of scripts consumes the live broadcast from a Telos Prostream and creates hourly audio files. One (1) week of 256kb/s mp3 files are kept. Older files are re-encoded to smaller mono mp3 at a separate NAS storage path. A web interface enables browsing the files.
