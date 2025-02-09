@@ -1,6 +1,4 @@
-[
-<img src-"https://xray.fm/theme/107/img/logo1_white-on-black_399.png" alt="Xray Logo" width=200/>
-]
+![Wish this Xray Logo could be made smaller here](https://xray.fm/theme/107/img/logo1_white-on-black_399.png)
 # KXRY - hourly recording and audio file management
 
 ## Description
